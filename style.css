@@ -1,0 +1,175 @@
+* {
+/*Box model stuff*/
+  margin: 0;
+  padding: 0;
+/*Miscellaneous*/
+  box-sizing: border-box;
+}
+body {
+/*Box model stuff*/
+  width: 100vw;
+  height: 100vh;
+  background-color: #8eddf9;
+}
+
+.placar {
+/*Display stuff*/
+  display: none;
+  justify-content: center;
+/*Box model stuff*/
+  padding-top: 7rem;
+}
+
+.board {
+/*Display stuff*/
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+/*Box model stuff*/
+  width: 100%;
+  height: 100%;
+}
+
+.cell {
+/*Display stuff*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+/*Positioning stuff*/
+  position: relative;
+/*Box model stuff*/
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+}
+/* Bordas */
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+/*Box model stuff*/
+  border-top: none;
+}
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+/*Box model stuff*/
+  border-left: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+/*Box model stuff*/
+  border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+/*Box model stuff*/
+  border-bottom: none;
+}
+
+.cell.x,
+.cell.o {
+/*Miscellaneous*/
+  cursor: not-allowed;
+}
+
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::before {
+/*Box model stuff*/
+  background: #ace9ff !important;
+}
+
+/* X */
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.x .cell:not(.x):not(.o):hover::before {
+/*Display stuff*/
+  content: "";
+/*Positioning stuff*/
+  position: absolute;
+/*Box model stuff*/
+  width: calc(100px * 0.9);
+  height: calc(100px * 0.15);
+  background: white;
+}
+.cell.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after {
+/*Manipulations stuff*/
+  transform: rotate(45deg);
+}
+.cell.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before {
+/*Manipulations stuff*/
+  transform: rotate(-45deg);
+}
+
+.cell.o::before,
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::before {
+/*Display stuff*/
+  content: "";
+/*Positioning stuff*/
+  position: absolute;
+/*Box model stuff*/
+  width: calc(100px * 0.8);
+  height: calc(100px * 0.8);
+  border-radius: 50%;
+  background: white;
+}
+/* mensagem de vitoria */
+.mensagem-de-vitoria {
+/*Display stuff*/
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+/*Positioning stuff*/
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+/*Box model stuff*/
+  background: rgb(0, 0, 0, 0.7);
+}
+
+.mensagem-de-vitoria button {
+/*Box model stuff*/
+  margin-top: 16px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #b796d9;
+/*Typography stuff*/
+  font-size: 2.5rem;
+  color: #fff;
+/*Miscellaneous*/
+  cursor: pointer;
+}
+
+.mensagem-de-vitoria button:hover {
+/*Box model stuff*/
+  background-color: #fff;
+/*Typography stuff*/
+  color: #b796d9;
+}
+
+.mensagem-de-vitoria p {
+/*Typography stuff*/
+  font-size: 5rem;
+  color: #fff;
+}
+
+.show-mensagem-de-vitoria{
+    display: flex;
+}
