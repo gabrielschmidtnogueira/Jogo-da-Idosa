@@ -4,6 +4,9 @@ const mensagemVitoria = document.querySelector("[data-mensagem-vitoria]");
 const textoVitoria = document.querySelector("[data-mensagem-vitoria-texto]");
 const botaoVitoria = document.querySelector("[data-botao-vitoria]");
 
+const placarX = document.querySelector("[data-x-placar]");
+const placarO = document.querySelector("[data-o-placar]");
+
 let isCircleTurn;
 
 const combinacoes = [
@@ -36,13 +39,21 @@ const startGame = () => {
   mensagemVitoria.classList.remove("show-mensagem-de-vitoria");
 };
 
+let vitoriasX = 0;
+let vitoriasO = 0;
+
 const endGame = (empate) => {
-  console.log("aaa");
   if (empate === true) {
     textoVitoria.innerText = "Empatou!";
   } else {
-    console.log("perdeu");
     textoVitoria.innerText = isCircleTurn ? "O Venceu!" : "X Venceu!";
+    if (isCircleTurn) {
+      vitoriasO=vitoriasO+1
+      placarO.innerText = `O - ${vitoriasO}`;
+    } else {
+      vitoriasX=vitoriasX+1
+      placarX.innerText = `${vitoriasX} - X`;
+    }
   }
   mensagemVitoria.classList.add("show-mensagem-de-vitoria");
 };
@@ -90,10 +101,10 @@ const handleClick = (e) => {
   // verificar vitoria
   const venceu = verVitoria(classToAdd);
   const empatou = verEmpate();
-  if (empatou) {
-    endGame(true);
-  } else if (venceu) {
+  if (venceu) {
     endGame(false);
+  } else if (empatou) {
+    endGame(true);
   } else {
     trocarTurnos();
   }
