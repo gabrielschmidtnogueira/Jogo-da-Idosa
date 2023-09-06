@@ -17,7 +17,8 @@ body {
 
 .placar {
   /*Display stuff*/
-  font-size: 4rem;
+  width: 70vw;
+  font-size: 7vw;
   font-weight: bolder;
   color: #fff;
   display: flex;
