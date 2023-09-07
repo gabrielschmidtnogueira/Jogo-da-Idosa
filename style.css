@@ -15,18 +15,6 @@ body {
   background-color: #8eddf9;
 }
 
-.placar {
-  /*Display stuff*/
-  width: 70vw;
-  font-size: 7vw;
-  font-weight: bolder;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  /*Box model stuff*/
-  margin: 7rem;
-}
-
 .board {
   /*Display stuff*/
   display: grid;
@@ -177,4 +165,29 @@ body {
 
 .show-mensagem-de-vitoria {
   display: flex;
+}
+
+.placar {
+  /*Display stuff*/
+  width: 70vw;
+  font-size: 8vw;
+  font-weight: bolder;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  /*Box model stuff*/
+  margin: 7rem;
+}
+.aa {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.aa span {
+  font-size: 7vw;
+  margin-inline: 10px;
+}
+.aa p {
+  font-size: 6vw;
 }

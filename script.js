@@ -7,7 +7,7 @@ const botaoVitoria = document.querySelector("[data-botao-vitoria]");
 const placarX = document.querySelector("[data-x-placar]");
 const placarO = document.querySelector("[data-o-placar]");
 
-let isCircleTurn;
+let isCircleTurn = false;
 
 const combinacoes = [
   // horizontais
@@ -24,15 +24,12 @@ const combinacoes = [
 ];
 
 const startGame = () => {
-  isCircleTurn = false;
-
   for (const cell of cellElements) {
     cell.removeEventListener("click", handleClick);
     cell.addEventListener("click", handleClick, { once: true });
     cell.classList.remove("x");
     cell.classList.remove("o");
   }
-  isCircleTurn = false;
 
   setBoardHover();
 
@@ -42,19 +39,28 @@ const startGame = () => {
 let vitoriasX = 0;
 let vitoriasO = 0;
 
+const atualizarPLacar = () => {
+  placarO.innerText = `${vitoriasO}`;
+  placarX.innerText = `${vitoriasX}`;
+};
+
 const endGame = (empate) => {
   if (empate === true) {
+    if (vitoriasO > vitoriasX) {
+      vitoriasO -= 1;
+    } else {
+      vitoriasX -= 1;
+    }
     textoVitoria.innerText = "Empatou!";
   } else {
     textoVitoria.innerText = isCircleTurn ? "O Venceu!" : "X Venceu!";
     if (isCircleTurn) {
-      vitoriasO=vitoriasO+1
-      placarO.innerText = `O - ${vitoriasO}`;
+      vitoriasO += 1;
     } else {
-      vitoriasX=vitoriasX+1
-      placarX.innerText = `${vitoriasX} - X`;
+      vitoriasX += 1;
     }
   }
+  atualizarPLacar();
   mensagemVitoria.classList.add("show-mensagem-de-vitoria");
 };
 
